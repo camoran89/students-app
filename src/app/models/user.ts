@@ -1,5 +1,5 @@
 export interface User {
   username: string;
   password: string;
-  role: 'university' | 'hospital';
+  role: 'universidad' | 'hospital' | '';
 }
