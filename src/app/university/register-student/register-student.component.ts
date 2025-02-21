@@ -60,9 +60,6 @@ export class RegisterStudentComponent {
   }
 
   logout(): void {
-    const email = this.studentForm.get('email')?.value;
-    this.authService.logout(email).subscribe(response => {
-      this.router.navigate(['']);
-    });
+    this.router.navigate(['']);
   }
 }

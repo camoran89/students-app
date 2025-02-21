@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { StudentService } from '../../services/student.service';
 import { Student } from '../../models/student';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-request-approval',
@@ -11,7 +12,9 @@ export class RequestApprovalComponent implements OnInit {
 
   students: Student[] = [];
 
-  constructor(private studentService: StudentService) {}
+  constructor(private studentService: StudentService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.studentService.getStudents().subscribe(data => {
@@ -25,6 +28,14 @@ export class RequestApprovalComponent implements OnInit {
     } else {
       this.rejectRequest(student.studentId ?? '');
     }
+  }
+
+  approve(): void {
+    this.router.navigate(['hospital/lista']);
+  }
+
+  logout(): void {
+    this.router.navigate(['']);
   }
 
   private approveRequest(id: string) {
