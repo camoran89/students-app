@@ -1,0 +1,28 @@
+<div class="container">
+    <h2>Lista estudiantes pendientes por aprobación</h2>
+    <br>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>ID de Estudiante</th>
+                <th>Departamento</th>
+                <th>Aprobado</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (student of students; track student.studentId) {
+            <tr>
+                <td>{{ student.name }}</td>
+                <td>{{ student.email }}</td>
+                <td>{{ student.studentId }}</td>
+                <td>{{ student.department }}</td>
+                <td>
+                    <input type="checkbox" [checked]="student.acepted" (change)="onApprovalChange(student, $event)" />
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

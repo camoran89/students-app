@@ -6,6 +6,6 @@ export interface Student {
   studentId?: string;
   department?: string;
   role?: string;
-  accepted?: string;
+  acepted?: string;
   logged?: number;
 }

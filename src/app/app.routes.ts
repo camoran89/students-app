@@ -8,8 +8,8 @@ import { RequestApprovalComponent } from './hospital/request-approval/request-ap
 
 export const routes: Routes = [
     { path: '', component: LoginComponent },
-    { path: 'university/register-student', component: RegisterStudentComponent },
-    { path: 'university/send-request', component: SendRequestComponent },
-    { path: 'hospital/student-list', component: StudentListComponent },
-    { path: 'hospital/request-approval', component: RequestApprovalComponent },
+    { path: 'universidad/registrar', component: RegisterStudentComponent },
+    { path: 'universidad/send-request', component: SendRequestComponent },
+    { path: 'hospital/lista', component: StudentListComponent },
+    { path: 'hospital/aprobados', component: RequestApprovalComponent },
 ];

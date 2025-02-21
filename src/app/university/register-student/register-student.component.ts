@@ -8,7 +8,7 @@ import { Student } from '../../models/student';
   styleUrls: ['./register-student.component.scss']
 })
 export class RegisterStudentComponent {
-  student: Student = { name: '', email: '', studentId: '', department: '', accepted: 'No' };
+  student: Student = { name: '', email: '', studentId: '', department: '', acepted: 'No' };
 
   constructor(private studentService: StudentService) {}
 

@@ -39,9 +39,9 @@ export class LoginComponent {
       this.authService.login(user).subscribe({
         next: response => {
           if (response.role === 'hospital') {
-            this.router.navigate(['/hospital/student-list']);
+            this.router.navigate(['/hospital/lista']);
           } else if (response.role === 'universidad') {
-            this.router.navigate(['/hospital/register-student']);
+            this.router.navigate(['/universidad/registrar']);
           }
         },
         error: err => {

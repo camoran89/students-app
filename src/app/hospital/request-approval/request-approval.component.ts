@@ -19,11 +19,19 @@ export class RequestApprovalComponent implements OnInit {
     });
   }
 
-  approveRequest(id: string) {
+  onApprovalChange(student: Student, event: any): void {
+    if (event.target.checked) {
+      this.approveRequest(student.studentId ?? '');
+    } else {
+      this.rejectRequest(student.studentId ?? '');
+    }
+  }
+
+  private approveRequest(id: string) {
     let filteredStudent = this.students.find((student: Student) => student.studentId?.toLowerCase() == id.toLowerCase());
     
     if (filteredStudent) {
-      filteredStudent.accepted = 'Si';
+      filteredStudent.acepted = 'Si';
     }
 
     this.studentService.updateStudent(id, filteredStudent).subscribe(() => {
@@ -31,11 +39,11 @@ export class RequestApprovalComponent implements OnInit {
     });
   }
 
-  rejectRequest(id: string) {
+  private rejectRequest(id: string) {
     let filteredStudent = this.students.find((student: Student) => student.studentId?.toLowerCase() == id.toLowerCase());
     
     if (filteredStudent) {
-      filteredStudent.accepted = 'No';
+      filteredStudent.acepted = 'No';
     }
 
     this.studentService.updateStudent(id, filteredStudent).subscribe(() => {
