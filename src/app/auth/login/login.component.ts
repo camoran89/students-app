@@ -38,6 +38,7 @@ export class LoginComponent {
   
       this.authService.login(user).subscribe({
         next: response => {
+          localStorage.setItem('role', response.role?.toLowerCase() ?? '');
           if (response.role?.toLowerCase() === 'hospital') {
             this.router.navigate(['/hospital/lista']);
           } else if (response.role?.toLowerCase() === 'universidad') {

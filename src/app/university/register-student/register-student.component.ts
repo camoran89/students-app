@@ -60,6 +60,7 @@ export class RegisterStudentComponent {
   }
 
   logout(): void {
+    localStorage.setItem('role', '');
     this.router.navigate(['']);
   }
 }

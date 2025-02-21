@@ -35,6 +35,7 @@ export class RequestApprovalComponent implements OnInit {
   }
 
   logout(): void {
+    localStorage.setItem('role', '');
     this.router.navigate(['']);
   }
 

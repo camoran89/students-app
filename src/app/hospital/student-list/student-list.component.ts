@@ -29,6 +29,7 @@ export class StudentListComponent implements OnInit {
   }
 
   logout(): void {
+    localStorage.setItem('role', '');
     this.router.navigate(['']);
   }
 }
