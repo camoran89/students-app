@@ -24,7 +24,7 @@
                 <td>{{ student.studentId }}</td>
                 <td>{{ student.department }}</td>
                 <td>
-                    <input type="checkbox" [checked]="student.acepted" (change)="onApprovalChange(student, $event)" />
+                    <input type="checkbox" [checked]="student.acepted == 'Si'" (change)="onApprovalChange(student, $event)" />
                 </td>
             </tr>
             }
