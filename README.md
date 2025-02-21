@@ -1,27 +1,88 @@
-# StudentsApp
+# Proyecto Angular: Gestión de Estudiantes
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.4.
+## 📌 Descripción
+Este proyecto implementa una aplicación Angular standalone con formularios reactivos y componentes organizados para gestionar estudiantes. Incluye vistas para registro de estudiantes, una lista de estudiantes y un flujo para la aprobación de solicitudes.
 
-## Development server
+## 🚀 Características
+- **Standalone Components:** No requiere módulos tradicionales para los componentes.
+- **Bootstrap 5:** Utilizado para el diseño y la presentación.
+- **Reactive Forms:** Manejo de formularios reactivos para la validación y captura de datos.
+- **Integración con servicios:** Uso de servicios para manejar datos de estudiantes y autenticación.
+- **Navegación:** Enlace entre diferentes vistas (lista de estudiantes, registro, aprobación).
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## 🛠️ Instalación
+1. **Instalar Angular CLI**: Asegúrate de tener el CLI de Angular instalado:
+   ```bash
+   npm install -g @angular/cli
+   ```
 
-## Code scaffolding
+2. **Crear un nuevo proyecto Angular**:
+   ```bash
+   ng new students-app --standalone --routing --style=scss
+   ```
+   Selecciona SCSS como preprocesador CSS.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+3. **Navegar al directorio del proyecto**:
+   ```bash
+   cd students-app
+   ```
 
-## Build
+4. **Instalar Bootstrap 5**:
+   ```bash
+   npm install bootstrap@5
+   ```
+   Añade la referencia de estilos en el archivo `angular.json`:
+   ```json
+   "styles": [
+     "node_modules/bootstrap/dist/css/bootstrap.min.css",
+     "src/styles.scss"
+   ]
+   ```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+5. **Instalar dependencias adicionales si es necesario**:
+   ```bash
+   npm install
+   ```
 
-## Running unit tests
+## 📂 Estructura de Componentes
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- **LoginComponent:** Formulario de inicio de sesión.
+- **RegisterStudentComponent:** Formulario de registro de estudiantes con validación.
+- **StudentListComponent:** Lista de estudiantes con botones para cerrar sesión y navegar a la página de aprobación.
+- **AprobarSolicitudesComponent (opcional):** Maneja la lógica de aprobación de solicitudes.
 
-## Running end-to-end tests
+## 🔑 Principales Vistas
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+1. **Inicio de Sesión:**
+   - Ruta: `/`
+   - Componente: `LoginComponent`
+   - Formulario reactivo para autenticación.
 
-## Further help
+2. **Registro de Estudiantes:**
+   - Ruta: `/university/register-student`
+   - Componente: `RegisterStudentComponent`
+   - Formulario para ingresar datos como nombre, correo, ID, departamento, rol y más.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+3. **Lista de Estudiantes:**
+   - Ruta: `/hospital/student-list`
+   - Componente: `StudentListComponent`
+   - Tabla para mostrar estudiantes con columnas como Nombre, Correo, ID y Departamento.
+
+4. **Aprobar Solicitudes:**
+   - Ruta: `/hospital/approve`
+   - Componente: `AprobarSolicitudesComponent`
+   - Página para gestionar y aprobar o rechazar solicitudes.
+
+## ✨ Servicios
+- **AuthService:** Maneja la autenticación de usuarios (login, logout).
+- **StudentService:** Provee métodos para registrar estudiantes y obtener la lista de estudiantes.
+
+## 🌐 Navegación
+- **Botón de cierre de sesión:**
+  Cada componente incluye un botón que permite al usuario cerrar sesión y ser redirigido a la página de inicio de sesión.
+
+- **Botón de navegación a la aprobación:**
+  El componente de lista de estudiantes incluye un botón para ir directamente a la vista de aprobación.
+
+## 📜 Notas
+Este proyecto está diseñado con Angular standalone components y utiliza las mejores prácticas actuales en la organización de componentes y servicios. El uso de Bootstrap 5 asegura una presentación atractiva y una experiencia de usuario consistente.
