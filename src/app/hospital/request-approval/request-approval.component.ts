@@ -15,7 +15,7 @@ export class RequestApprovalComponent implements OnInit {
 
   ngOnInit() {
     this.studentService.getStudents().subscribe(data => {
-      this.students = data;
+      this.students = data.filter(d => d.role === 'estudiante');
     });
   }
 

@@ -1,20 +1,37 @@
 import { Component } from '@angular/core';
+import { ReactiveFormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { StudentService } from '../../services/student.service';
 import { Student } from '../../models/student';
 
 @Component({
   selector: 'app-register-student',
   templateUrl: './register-student.component.html',
-  styleUrls: ['./register-student.component.scss']
+  styleUrls: ['./register-student.component.scss'],
+  standalone: true,
+  imports: [ReactiveFormsModule]
 })
 export class RegisterStudentComponent {
-  student: Student = { name: '', email: '', studentId: '', department: '', acepted: 'No' };
+  student!: Student;
 
-  constructor(private studentService: StudentService) {}
+  studentForm: FormGroup;
 
-  register() {
+  constructor(private studentService: StudentService,
+    private fb: FormBuilder) {
+    this.studentForm = this.fb.group({
+      name: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required],
+      studentId: ['', Validators.required],
+      department: [''],
+      role: [''],
+      acepted: [''],
+      logged: [0]
+    });
+  }
+
+  onSubmit(): void {
     this.studentService.registerStudent(this.student).subscribe(response => {
-      console.log('Student registered', response);
+      alert('Estudiante registrado');
     });
   }
 }
