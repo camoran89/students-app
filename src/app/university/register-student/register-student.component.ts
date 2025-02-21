@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { ReactiveFormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { StudentService } from '../../services/student.service';
-import { Student } from '../../models/student';
+import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-register-student',
@@ -11,12 +12,15 @@ import { Student } from '../../models/student';
   imports: [ReactiveFormsModule]
 })
 export class RegisterStudentComponent {
-  student!: Student;
 
   studentForm: FormGroup;
 
-  constructor(private studentService: StudentService,
-    private fb: FormBuilder) {
+  constructor(
+    private studentService: StudentService,
+    private authService: AuthService,
+    private router: Router,
+    private fb: FormBuilder
+  ) {
     this.studentForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -30,8 +34,35 @@ export class RegisterStudentComponent {
   }
 
   onSubmit(): void {
-    this.studentService.registerStudent(this.student).subscribe(response => {
+    const name = this.studentForm.get('name')?.value;
+    const email = this.studentForm.get('email')?.value;
+    const password = this.studentForm.get('password')?.value;
+    const studentId = this.studentForm.get('studentId')?.value;
+    const department = this.studentForm.get('department')?.value;
+    const role = (this.studentForm.get('role')?.value).toLowerCase();
+    const acepted = 'No';
+    const logged = 0;
+
+    const studentData = {
+      name,
+      email,
+      password,
+      studentId,
+      department,
+      role,
+      acepted,
+      logged
+    };
+
+    this.studentService.registerStudent(studentData).subscribe(response => {
       alert('Estudiante registrado');
+    });
+  }
+
+  logout(): void {
+    const email = this.studentForm.get('email')?.value;
+    this.authService.logout(email).subscribe(response => {
+      this.router.navigate(['']);
     });
   }
 }

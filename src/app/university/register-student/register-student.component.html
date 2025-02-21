@@ -1,5 +1,6 @@
 <div class="container mt-4">
-    <h2 class="mb-3">Registrar Estudiante</h2>
+    <button class="btn btn-danger float-end" (click)="logout()">Cerrar sesión</button>
+    <h2>Inscribir Estudiante</h2>
     <form [formGroup]="studentForm">
       <div class="mb-3">
         <label for="name" class="form-label">Nombre</label>
@@ -56,30 +57,10 @@
         <select id="role" class="form-select" formControlName="role">
           <option value="">Selecciona el rol</option>
           <option value="estudiante">Estudiante</option>
-          <option value="administrador">Administrador</option>
         </select>
-      </div>
-      <div class="mb-3">
-        <label for="acepted" class="form-label">Aceptado</label>
-        <select id="acepted" class="form-select" formControlName="acepted">
-          <option value="">Selecciona una opción</option>
-          <option value="Si">Si</option>
-          <option value="No">No</option>
-        </select>
-      </div>
-      <div class="mb-3">
-        <label for="logged" class="form-label">Sesiones Iniciadas</label>
-        <input
-          type="number"
-          id="logged"
-          class="form-control"
-          formControlName="logged"
-          placeholder="Cantidad de sesiones iniciadas"
-        />
       </div>
       <button type="submit" class="btn btn-primary" [disabled]="!studentForm.valid" (click)="onSubmit()">
         Registrar
       </button>
     </form>
-  </div>
-  
+</div>
