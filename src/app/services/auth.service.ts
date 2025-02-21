@@ -13,7 +13,7 @@ export class AuthService {
   login(user: User): Observable<Student> {
     return from(
       fetch(`${this.apiUrl}/login`, {
-        method: 'PUT',
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
@@ -25,12 +25,7 @@ export class AuthService {
             throw new Error(`Error ${response.status}: ${errorText}`);
           }
 
-          const contentType = response.headers.get("content-type");
-          if (contentType && contentType.includes("application/json")) {
-            return response.json();
-          } else {
-            return null;
-          }
+          return response.json();
         })
         .catch(error => {
           console.error('Error en login:', error);
@@ -42,7 +37,7 @@ export class AuthService {
   logout(user: string): Observable<Student> {
     return from(
       fetch(`${this.apiUrl}/logout`, {
-        method: 'PUT',
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },

@@ -31,16 +31,16 @@ export class LoginComponent {
   onSubmit() {
     if (this.loginForm.valid) {
       let user: User = {
-        username: this.loginForm.get('username')?.value, 
+        email: this.loginForm.get('username')?.value, 
         password: this.loginForm.get('password')?.value,
         role: ''
       }
   
       this.authService.login(user).subscribe({
         next: response => {
-          if (response.role === 'hospital') {
+          if (response.role?.toLowerCase() === 'hospital') {
             this.router.navigate(['/hospital/lista']);
-          } else if (response.role === 'universidad') {
+          } else if (response.role?.toLowerCase() === 'universidad') {
             this.router.navigate(['/universidad/registrar']);
           }
         },
